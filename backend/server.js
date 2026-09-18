@@ -152,6 +152,6 @@ app.delete("/api/history", authMiddleware, async (req, res) => {
     res.status(500).json({ error: "Failed to clear history" });
   }
 });
-app.listen(5000, () => {
-  console.log("Server running on port 5000");
+app.listen(process.env.PORT || 5000, () => {
+    console.log("Server running on port 5000");
 });
