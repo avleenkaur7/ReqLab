@@ -1,0 +1,251 @@
+.landing-page {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 15% 25%,
+      rgba(80, 70, 180, 0.18),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 85% 70%,
+      rgba(30, 100, 220, 0.12),
+      transparent 35%
+    ),
+    #03051c;
+  color: #f5f5f5;
+}
+
+.landing-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    rgba(150, 170, 240, 0.35) 1px,
+    transparent 1px
+  );
+  background-size: 22px 22px;
+  pointer-events: none;
+  opacity: 0.8;
+}
+.landing-page > * {
+  position: relative;
+  z-index: 1;
+}
+
+.landing-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28px 7%;
+  border-bottom: 1px solid rgba(80, 120, 180, 0.2);
+}
+
+.landing-logo {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.8px;
+}
+
+.landing-nav-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.landing-nav-buttons button,
+.get-started-btn,
+.cta-btn {
+  padding: 11px 20px;
+  border-radius: 7px;
+  border: 1px solid #263653;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s ease;
+}
+
+.login-btn {
+  background: transparent;
+  color: #f5f5f5;
+}
+
+.signup-btn,
+.get-started-btn,
+.cta-btn {
+  background: #1d7cff;
+  color: white;
+  border: none !important;
+}
+
+.landing-nav-buttons button:hover,
+.get-started-btn:hover,
+.cta-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.landing-main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 70px 24px;
+}
+
+.hero-section {
+  padding: 60px 0 90px;
+  text-align: center;
+}
+
+.hero-content h1 {
+  font-size: 52px;
+  line-height: 1.15;
+  letter-spacing: -1.5px;
+  margin-bottom: 24px;
+}
+
+.hero-content p {
+  max-width: 650px;
+  margin: 0 auto 30px;
+  color: #aab8d0;
+  line-height: 1.7;
+  font-size: 17px;
+}
+
+.about-section,
+.features-section,
+.cta-section {
+  margin-top: 40px;
+  padding: 55px 35px;
+  text-align: center;
+  border: 1px solid rgba(100, 120, 180, 0.2);
+  border-radius: 24px;
+  background: rgba(8, 14, 35, 0.55);
+  backdrop-filter: blur(12px);
+}
+
+.about-section p,
+.cta-section p {
+  max-width: 700px;
+  margin: 18px auto 0;
+  color: #aab8d0;
+  line-height: 1.7;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 32px;
+}
+
+.feature-card {
+  padding: 30px;
+  text-align: left;
+  border: 1px solid rgba(100, 120, 180, 0.25);
+  border-radius: 22px;
+  background: rgba(12, 18, 42, 0.75);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 30px rgba(40, 60, 150, 0.08);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(130, 110, 255, 0.6);
+}
+
+.feature-card h3 {
+  margin-bottom: 12px;
+}
+
+.feature-card p {
+  color: #aab8d0;
+  line-height: 1.6;
+}
+
+.cta-section {
+  border-top: 1px solid rgba(80, 120, 180, 0.2);
+}
+
+.cta-section h2 {
+  margin-bottom: 12px;
+}
+
+.cta-btn {
+  margin-top: 24px;
+}
+
+.landing-footer {
+  padding: 24px;
+  text-align: center;
+  border-top: 1px solid rgba(80, 120, 180, 0.2);
+  color: #8d9bb5;
+  font-size: 14px;
+}
+
+@media (max-width: 700px) {
+  .landing-navbar {
+    padding: 22px 5%;
+  }
+
+ .hero-content h1 {
+  font-size: 56px;
+  line-height: 1.15;
+  letter-spacing: -1.8px;
+  margin-bottom: 24px;
+
+  background: linear-gradient(90deg, #ffffff, #a78bfa);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .landing-main {
+    padding: 40px 20px;
+  }
+}
+.logo-symbol {
+  color: #1d7cff;
+  font-size: 32px;
+  font-weight: 700;
+}
+.landing-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.landing-logo img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+.feature-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card::before {
+  content: "";
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  right: -60px;
+  top: -60px;
+  background: radial-gradient(
+    circle,
+    rgba(117, 76, 255, 0.35),
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.feature-card > * {
+  position: relative;
+  z-index: 1;
+}

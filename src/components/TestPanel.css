@@ -1,0 +1,161 @@
+.test-panel {
+  margin-top: 32px;
+  padding: 24px;
+  border: 1px solid #20283a;
+  border-radius: 10px;
+  background: rgba(7, 10, 20, 0.75);
+}
+.test-panel h3 {
+  font-size: 22px;
+  margin-bottom: 24px;
+  color: #f5f5f5;
+}
+.test-builder {
+  padding: 20px;
+  margin-bottom: 24px;
+  border: 1px solid #20283a;
+  border-radius: 8px;
+  background: rgba(10, 14, 25, 0.7);
+}
+
+.test-builder h4 {
+  margin-bottom: 18px;
+}
+.test-builder input,
+.test-builder select {
+  width: 100%;
+  padding: 10px 12px;
+  margin: 8px 0 16px;
+  background: #0b0f1a;
+  color: #f5f5f5;
+  border: 1px solid #283247;
+  border-radius: 6px;
+  outline: none;
+}
+.test-builder button {
+  padding: 10px 18px;
+  background: #1d7cff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.test-builder button:hover {
+  background: #3390ff;
+}
+.run-all-button {
+  padding: 10px 18px;
+  margin-right: 10px;
+  margin-bottom: 24px;
+  background: #1d7cff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.run-all-button:hover {
+  background: #3390ff;
+}
+.saved-tests {
+  margin-top: 24px;
+}
+
+.saved-tests h4 {
+  margin-bottom: 16px;
+}
+.test-item {
+  padding: 18px;
+  margin-bottom: 12px;
+  border: 1px solid #20283a;
+  border-radius: 8px;
+  background: rgba(8, 12, 22, 0.7);
+}
+
+.test-item p {
+  margin: 8px 0;
+}
+
+.test-item button {
+  margin-right: 8px;
+  margin-top: 10px;
+  padding: 8px 14px;
+  background: transparent;
+  color: #aaa;
+  border: 1px solid #283247;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.test-item button:hover {
+  color: #fff;
+  border-color: #1d7cff;
+}
+.test-panel {
+  box-shadow: 0 0 25px rgba(0, 80, 180, 0.08);
+}
+.saved-tests-toggle {
+  padding: 10px 18px;
+  background: #1d7cff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s ease;
+}
+
+.saved-tests-toggle:hover {
+  background: #3390ff;
+  transform: translateY(-2px);
+}
+.run-all-button {
+  background: #16a34a;
+  transition: 0.2s ease;
+}
+
+.run-all-button:hover {
+  background: #22c55e;
+  transform: translateY(-2px);
+}
+.success-message {
+  margin-top: 12px;
+  color: #63e6be;
+  font-size: 14px;
+  font-weight: 600;
+}
+.test-item.pass {
+  border-left: 4px solid #16a34a;
+}
+
+.test-item.fail {
+  border-left: 4px solid #dc2626;
+}
+
+.test-item.not-run {
+  border-left: 4px solid #facc15;
+}
+.test-item.pass p:last-of-type {
+  color: #16a34a;
+}
+
+.test-item.fail p:last-of-type {
+  color: #ef4444;
+}
+
+.test-item.not-run p:last-of-type {
+  color: #facc15;
+}
+.test-item button:last-child {
+  color: #ff6b6b;
+  border-color: #5c2932;
+}
+
+.test-item button:last-child:hover {
+  color: #fff;
+  background: #b4233c;
+  border-color: #b4233c;
+}
