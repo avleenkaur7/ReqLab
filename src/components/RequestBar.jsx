@@ -23,7 +23,7 @@ function RequestBar() {
   const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/history", {
+    fetch("https://reqlab-backend.onrender.com/api/history", {
       credentials: "include"
     })
       .then(res => res.json())
@@ -58,7 +58,7 @@ function RequestBar() {
         newHeaders["Authorization"] = `Basic ${credentials}`;
       }
       console.log("HEADERS BEING SENT:", newHeaders);
-      const response = await fetch("http://localhost:5000/api/test", {
+      const response = await fetch("https://reqlab-backend.onrender.com/api/test", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -95,7 +95,7 @@ function RequestBar() {
   };
 
   const clearHistory = async () => {
-    await fetch("http://localhost:5000/api/history", {
+    await fetch("https://reqlab-backend.onrender.com/api/history", {
       method: "DELETE",
       credentials: "include"
     });

@@ -19,7 +19,7 @@ const Signup = () => {
   setError("Password must be at least 6 characters long");
   return;
 }
-    const response = await fetch("http://localhost:5000/api/signup", {
+    const response = await fetch("https://reqlab-backend.onrender.com/api/signup", {
       method: "POST",
       body: JSON.stringify({
         email: email,

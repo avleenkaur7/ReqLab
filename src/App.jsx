@@ -16,7 +16,7 @@ function ReqLab() {
   const navigate = useNavigate();
 
   async function handleLogout() {
-    const response = await fetch("http://localhost:5000/api/logout", {
+    const response = await fetch("https://reqlab-backend.onrender.com/api/logout", {
       method: "POST",
       credentials: "include"
     });
@@ -48,7 +48,7 @@ function ProtectedRoute({ children }) {
   const [authenticated, setAuthenticated] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/me", {
+    fetch("https://reqlab-backend.onrender.com/api/me", {
       credentials: "include"
     })
       .then((response) => {

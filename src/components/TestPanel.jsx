@@ -12,7 +12,7 @@ function TestPanel({ responseData, url, method }) {
   const [successMessage, setSuccessMessage] = useState("");
   // Get saved tests
   useEffect(() => {
-    fetch("http://localhost:5000/api/tests", {
+    fetch("https://reqlab-backend.onrender.com/api/tests", {
       credentials: "include"
     })
       .then((response) => response.json())
@@ -79,7 +79,7 @@ function TestPanel({ responseData, url, method }) {
       };
     }
 
-    const response = await fetch("http://localhost:5000/api/tests", {
+    const response = await fetch("https://reqlab-backend.onrender.com/api/tests", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -106,7 +106,7 @@ function TestPanel({ responseData, url, method }) {
     if (!currentResponse) {
       const test = tests[0];
 
-      const response = await fetch("http://localhost:5000/api/test", {
+      const response = await fetch("https://reqlab-backend.onrender.com/api/test", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -148,7 +148,7 @@ function TestPanel({ responseData, url, method }) {
 
     // Save results to PostgreSQL
     for (const test of results) {
-      await fetch(`http://localhost:5000/api/tests/${test.id}`, {
+      await fetch(`https://reqlab-backend.onrender.com/api/tests/${test.id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json"
@@ -169,7 +169,7 @@ function TestPanel({ responseData, url, method }) {
   // Run one saved test
   const runSavedTest = async (test) => {
     try {
-      const response = await fetch("http://localhost:5000/api/test", {
+      const response = await fetch("https://reqlab-backend.onrender.com/api/test", {
         method: "POST",
         credentials: "include",
         headers: {
@@ -202,7 +202,7 @@ function TestPanel({ responseData, url, method }) {
         result: passed ? "PASS" : "FAIL"
       };
 
-      await fetch(`http://localhost:5000/api/tests/${test.id}`, {
+      await fetch(`https://reqlab-backend.onrender.com/api/tests/${test.id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json"
@@ -234,7 +234,7 @@ function TestPanel({ responseData, url, method }) {
     console.log("Deleting test:", id);
 
     const response = await fetch(
-      `http://localhost:5000/api/tests/${id}`,
+      `https://reqlab-backend.onrender.com/api/tests/${id}`,
       {
         method: "DELETE",
         credentials: "include"
@@ -265,7 +265,7 @@ function TestPanel({ responseData, url, method }) {
     };
 
     const response = await fetch(
-      `http://localhost:5000/api/tests/${editingTest.id}`,
+      `https://reqlab-backend.onrender.com/api/tests/${editingTest.id}`,
       {
         method: "PUT",
         headers: {
