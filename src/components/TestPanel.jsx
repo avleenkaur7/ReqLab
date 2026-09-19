@@ -12,13 +12,24 @@ function TestPanel({ responseData, url, method }) {
   const [successMessage, setSuccessMessage] = useState("");
   // Get saved tests
   useEffect(() => {
-    fetch("https://reqlab-backend.onrender.com/api/tests", {
-      credentials: "include"
-    })
-      .then((response) => response.json())
-      .then((data) => {
+  fetch("https://reqlab-backend.onrender.com/api/tests", {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("token")}`
+    }
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (Array.isArray(data)) {
         setTests(data);
-      });
+      } else {
+        setTests([]);
+      }
+    })
+    .catch((error) => {
+      console.error("Error fetching saved tests:", error);
+      setTests([]);
+    });
+}, []);
   }, []);
 
   // Edit test
