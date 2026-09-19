@@ -23,14 +23,29 @@ function RequestBar() {
   const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
-    fetch("https://reqlab-backend.onrender.com/api/history", {
-      credentials: "include"
-    })
-      .then(res => res.json())
-      .then(data => setHistory(data));
+    const fetchHistory = async () => {
+      const response = await fetch(
+        "https://reqlab-backend.onrender.com/api/history",
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+          }
+        }
+      );
+
+      const data = await response.json();
+
+      if (response.ok && Array.isArray(data)) {
+        setHistory(data);
+      } else {
+        setHistory([]);
+      }
+    };
+
+    fetchHistory();
   }, []);
   const navigate = useNavigate();
- 
+
 
 
   const handleSend = async () => {
@@ -61,9 +76,9 @@ function RequestBar() {
       const response = await fetch("https://reqlab-backend.onrender.com/api/test", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`
         },
-        credentials: "include",
         body: JSON.stringify({
           method: method,
           url: url,
@@ -80,8 +95,7 @@ function RequestBar() {
         status: data.status
       };
 
-      setHistory([newEntry, ...history]);
-      setResponseData(data);
+setHistory(prevHistory => [newEntry, ...prevHistory]);      setResponseData(data);
       console.log("FETCH STATUS:", response.status);
       console.log("RESPONSE DATA:", data);
       setResponseData(data);
@@ -94,14 +108,16 @@ function RequestBar() {
     }
   };
 
-  const clearHistory = async () => {
-    await fetch("https://reqlab-backend.onrender.com/api/history", {
-      method: "DELETE",
-      credentials: "include"
-    });
+ const clearHistory = async () => {
+  await fetch("https://reqlab-backend.onrender.com/api/history", {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("token")}`
+    }
+  });
 
-    setHistory([]);
-  };
+  setHistory([]);
+};
   return (
 
     <div className="request-bar">
@@ -278,35 +294,35 @@ function RequestBar() {
       )
       }
       <button
-      className="history-toggle" onClick={() => setShowHistory(!showHistory)}>
+        className="history-toggle" onClick={() => setShowHistory(!showHistory)}>
         {showHistory ? "Hide History" : "Request History"}
       </button>
 
       {showHistory && (
         <div className="history-panel">
-         <h3>Request History</h3>
+          <h3>Request History</h3>
 
-{history.length === 0 ? (
-  <p>No request history available.</p>
-) : (
-  <div className="history-list">
-    {history.map((item) => (
-      <div key={item.id} className="history-item">
-        <span className="history-method">
-          <strong>{item.method}</strong>
-        </span>
+          {history.length === 0 ? (
+            <p>No request history available.</p>
+          ) : (
+            <div className="history-list">
+              {history.map((item) => (
+                <div key={item.id} className="history-item">
+                  <span className="history-method">
+                    <strong>{item.method}</strong>
+                  </span>
 
-        <p>{item.url}</p>
+                  <p>{item.url}</p>
 
-        <span className="history-status">{item.status}</span>
-      </div>
-    ))}
+                  <span className="history-status">{item.status}</span>
+                </div>
+              ))}
 
-    <button className="clear-history-btn" onClick={clearHistory}>
-      Clear History
-    </button>
-  </div>
-)}
+              <button className="clear-history-btn" onClick={clearHistory}>
+                Clear History
+              </button>
+            </div>
+          )}
         </div>
       )}
       <TestPanel responseData={responseData} url={url} method={method} />
