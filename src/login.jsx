@@ -8,14 +8,19 @@ function Login() {
   const [error, setError] = useState("");
    
 
-  const navigate = useNavigate();
-  const handleLogin = async (e) => {
-    e.preventDefault();
-     if (!email || !password) {
-  setError("Please enter your email and password");
-  return;
-}
-    const response = await fetch("https://reqlab-backend.onrender.com/api/login", {
+const navigate = useNavigate();
+
+const handleLogin = async (e) => {
+  e.preventDefault();
+
+  if (!email || !password) {
+    setError("Please enter your email and password");
+    return;
+  }
+
+  const response = await fetch(
+    "https://reqlab-backend.onrender.com/api/login",
+    {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -23,23 +28,22 @@ function Login() {
       body: JSON.stringify({
         email,
         password
-      }),
-      
+      })
+    }
+  );
 
-    });
-
-    const data = await response.json();
-     if (response.status === 200) {
   const data = await response.json();
-  localStorage.setItem("token", data.token);
-  navigate("/app");
-}
-     else{
-      setError("Incorrect password , try again")
-     }
-    console.log(data);
-    console.log(response.status);
-  };
+
+  if (response.ok) {
+    localStorage.setItem("token", data.token);
+    navigate("/app");
+  } else {
+    setError(data.message || "Incorrect password, try again");
+  }
+
+  console.log(data);
+  console.log(response.status);
+};
   
   return (
   <div className="login-page">
