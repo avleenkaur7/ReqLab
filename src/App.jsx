@@ -48,9 +48,11 @@ function ProtectedRoute({ children }) {
   const [authenticated, setAuthenticated] = useState(false);
 
   useEffect(() => {
-    fetch("https://reqlab-backend.onrender.com/api/me", {
-      credentials: "include"
-    })
+   fetch("https://reqlab-backend.onrender.com/api/me", {
+  headers: {
+    Authorization: `Bearer ${localStorage.getItem("token")}`
+  }
+})
       .then((response) => {
         console.log("ME STATUS:", response.status);
 

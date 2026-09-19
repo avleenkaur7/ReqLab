@@ -24,14 +24,16 @@ function Login() {
         email,
         password
       }),
-      credentials:"include"
+      
 
     });
 
     const data = await response.json();
-     if(response.status === 200 ){
-      navigate("/app")
-     }
+     if (response.status === 200) {
+  const data = await response.json();
+  localStorage.setItem("token", data.token);
+  navigate("/app");
+}
      else{
       setError("Incorrect password , try again")
      }

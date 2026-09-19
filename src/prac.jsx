@@ -19,6 +19,7 @@ const Prac = ()=>{
         e.preventDefault();
        const response = await fetch("http://localhost:5000/api/login" ,{
             method: "POST",
+            credentials: "include",
             body: JSON.stringify({
                 email : email,
                 password:password
