@@ -30,7 +30,6 @@ function TestPanel({ responseData, url, method }) {
       setTests([]);
     });
 }, []);
-  }, []);
 
   // Edit test
   const editTest = (test) => {
